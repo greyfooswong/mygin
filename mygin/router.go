@@ -11,7 +11,10 @@ type router struct {
 }
 
 func newRouter() *router {
-	return &router{handlers: make(map[string]HandlerFunc), roots: make(map[string]*node)}
+	return &router{
+		handlers: make(map[string]HandlerFunc),
+		roots:    make(map[string]*node),
+	}
 }
 
 func (r *router) addRoute(method, pattern string, handlerFunc HandlerFunc) {
