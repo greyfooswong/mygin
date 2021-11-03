@@ -3,6 +3,7 @@ package mygin
 import (
 	"html/template"
 	"log"
+	"myWeb/mygin/middleware"
 	"net/http"
 	"path"
 	"strings"
@@ -32,6 +33,12 @@ func New() *Engine {
 	engine.RouterGroup = &RouterGroup{engine: engine}
 	engine.groups = []*RouterGroup{engine.RouterGroup}
 	return engine
+}
+
+func Default() *Engine {
+	r := New()
+	r.Use(middleware.Logger(), middleware.Recovery())
+	return r
 }
 
 func (group *RouterGroup) Use(middlewares ...HandlerFunc) {
