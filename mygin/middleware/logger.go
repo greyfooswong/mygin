@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"log"
-	"mygin"
+	mygin "myWeb/mygin"
 	"time"
 )
 
